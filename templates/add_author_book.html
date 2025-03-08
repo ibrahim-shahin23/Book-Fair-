@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+<style>
+    input,select{
+        margin-bottom:20px; 
+    }
+    #submit{
+        background-color: gray;
+    }
+    #submit:hover{
+        background-color: lightgray;
+    }
+</style>
+{% endblock head %}
+{% block content %}
+<h1 class="text-center">{{form_title}}</h1>
+<ul>
+    {% for error in errors%}
+    <li>{{error}}</li>
+    {% endfor %}
+</ul>
+
+<div class="container">
+    <form  method="POST">
+        {{wtf.quick_form(form)}}
+    </form>
+</div>
+{% endblock %}

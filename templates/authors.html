@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="d-flex mb-4 align-items-center justify-content-around">
+        <h1>Authors List</h1>
+        <a class="btn btn-secondary" href="{{ url_for('add_author') }}">Add Author</a>
+    </div>
+    <div class="row d-flex justify-content-center">
+            {% for author in authors %}
+                <div class="col-md-2 m-4 d-flex">
+                    {{macros.author_card(author)}}    
+                </div>
+            {% endfor %}
+        </div>
+{% endblock content %}
+{% import 'macro/author_card.html' as macros %}

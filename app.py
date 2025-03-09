@@ -5,11 +5,15 @@ import json
 from database import db
 from models import Book, Author
 from forms import BookForm ,AuthorForm
+from dotenv import load_dotenv, find_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URI')
 
-app.config['SECRET_KEY'] = 'd2b0873fb7c652daa2ccc52b5b479edd'
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project1.db"
 Bootstrap(app)
 db.init_app(app)
 
